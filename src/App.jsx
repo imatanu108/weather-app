@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { CurrentWeatherCard, HourlyForecast, SearchContainer } from './components/index'
+import { CurrentWeatherCard, HourlyForecast, MultipleSearch, SearchContainer } from './components/index'
 import { useSelector } from 'react-redux'
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
     <>
       <h1 id='page-title' className='text-4xl font-bold text-center'>{title}</h1>
       <SearchContainer />
+      <MultipleSearch/>
       <CurrentWeatherCard />
       <HourlyForecast />
       <div className='text-center my-4'>© Made with Love💙</div>

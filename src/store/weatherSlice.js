@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    currentWeatherData: {}
+    currentWeatherData: {},
+    multipleWeatherData: []
 }
 
 const weatherSlice = createSlice({
@@ -10,10 +11,13 @@ const weatherSlice = createSlice({
     reducers: {
         setCurrentWeatherData: (state, action) => {
             state.currentWeatherData = action.payload
+        },
+        setMultipleWeatherData: (state, action) => {
+            state.multipleWeatherData = action.payload
         }
     }
 })
 
-export const { setCurrentWeatherData } = weatherSlice.actions
+export const { setCurrentWeatherData, setMultipleWeatherData } = weatherSlice.actions
 
 export default weatherSlice.reducer
