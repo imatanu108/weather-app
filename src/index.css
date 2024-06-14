@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  height: 100%;
+  height: min-content;
   margin: 0;
 }
 
