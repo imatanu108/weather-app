@@ -18,7 +18,7 @@ function App() {
       <SearchContainer />
       <CurrentWeatherCard />
       <HourlyForecast />
-      <div className='text-center my-4'>© Made with Love!</div>
+      <div className='text-center my-4'>© Made with Love💙</div>
     </>
   )
 }
