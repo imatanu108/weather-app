@@ -14,9 +14,9 @@ function useMultipleWeatherInfo(locationList) {
                     const response = await fetch(requestURL);
                     const data = await response.json();
                     console.log("this is data",data);
-                    console.log(1, multipleWeatherData)
+                    // console.log(1, multipleWeatherData)
                     setMultipleWeatherData((prev) => [...prev, data])                    
-                    console.log(2, multipleWeatherData)                    
+                    // console.log(2, multipleWeatherData)                    
                 } catch (error) {
                     console.error('Error fetching multiple weather data:', error);
                 }

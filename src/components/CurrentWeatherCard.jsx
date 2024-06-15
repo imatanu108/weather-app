@@ -9,7 +9,7 @@ function CurrentWeatherCard() {
     const location = currentWeatherData.location
 
     let dayTime = ''
-    let uvLevel = ''
+    // let uvLevel = ''
     if (currentWeatherData && liveWeather) {
         let time = String(liveWeather.last_updated.split(" ")[1]);
         let timeInt = parseInt(time.replace(":", ""), 10);
@@ -23,10 +23,10 @@ function CurrentWeatherCard() {
             { start: 1101, end: 1459, name: "Noon", gradient: "linear-gradient(to bottom, #4a90e2, #5c8ebf)", color: "#5c8ebf" },
             { start: 1500, end: 1700, name: "Afternoon", gradient: "linear-gradient(to bottom, #4a90e2, #75b4f4)", color: "#75b4f4)" },
             { start: 1701, end: 1759, name: "Dusk", gradient: "linear-gradient(to bottom, #ff4500, #d34e39, #ff7f50)", color: "#ff7f50" },
-            { start: 1800, end: 2059, name: "Evening", gradient: "linear-gradient(to bottom, #2c3e50, #3f6a95)" , color: "#3f6a95"},
+            { start: 1800, end: 2059, name: "Evening", gradient: "linear-gradient(to bottom, #2c3e50, #3f6a95)", color: "#3f6a95" },
             { start: 2100, end: 2359, name: "Night", gradient: "linear-gradient(to bottom, #1b2735, #080614)", color: "#080614" }
         ];
-    
+
         for (let range of timeRanges) {
             if (timeInt >= range.start && timeInt <= range.end) {
                 dayTime = range.name;
@@ -39,7 +39,7 @@ function CurrentWeatherCard() {
 
     if (liveWeather && forecastWeather && location) {
         return (
-            <div className='flex flex-row flex-wrap gap-4 mt-4 mb-6 justify-center'>
+            <div className='flex flex-row flex-wrap gap-4 mt-8 mb-6 justify-center'>
                 <div className='flex p-4 w-fit flex-col border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
                     <div className='text-center mb-4'>
                         <span className='text-xl'>{location.name}</span>
@@ -95,6 +95,8 @@ function CurrentWeatherCard() {
                 </div>
             </div>
         )
+    } else {
+        return <div className='text-center'>Loading...</div>;  // Handles the case when data is not yet available
     }
 }
 

@@ -7,7 +7,7 @@ function HourlyForecast() {
     const forcastWeather = currentWeatherData.forecast
 
     if (!forcastWeather) {
-        return <div className='text-center'>Loading...</div>;  // Handles the case when data is not yet available
+        return <div className='text-center my-4'>Loading...</div>;  // Handles the case when data is not yet available
     }
 
     return (

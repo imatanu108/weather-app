@@ -10,8 +10,10 @@ function SearchContainer() {
     const dispatch = useDispatch()
 
     const getWeather = () => {
-        setCurrentLocation(location);
-        setLocation('');
+        if (location !== "") {
+            setCurrentLocation(location);
+            setLocation('');
+        }
     };
 
     const updateWeather = () => {
@@ -32,10 +34,10 @@ function SearchContainer() {
 
     return (
         <>
-            <div className='text-center mt-8 text-base'>
-                Enter your location, <span className='text-cyan-200 font-semibold'>Stay Updated!</span>
+            <div className='text-center my-4 mt-8 text-base'>
+                Enter your location & <span className='font-semibold'>Stay Updated!</span>
             </div>
-            <div className="flex flex-col items-center md:flex-row md:items-center justify-center space-y-4 md:space-y-0 md:space-x-4 p-2 rounded-lg mx-4 mt-2 mb-7 pb-3">
+            <div className="flex flex-col items-center md:flex-row md:items-center justify-center space-y-4 md:space-y-0 md:space-x-4 p-2 rounded-lg mx-4 m-t-1">
                 <input
                     id="search-field"
                     type="text"
@@ -43,7 +45,7 @@ function SearchContainer() {
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     className="h-10 w-80 p-3 border text-base text-gray-600 border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
-                    placeholder="Enter location"
+                    placeholder="Enter your location"
                 />
                 <div className="flex space-x-4">
                     <button

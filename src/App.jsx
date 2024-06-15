@@ -1,25 +1,15 @@
-import React, { useEffect } from 'react'
-import { CurrentWeatherCard, HourlyForecast, MultipleSearch, SearchContainer } from './components/index'
-import { useSelector } from 'react-redux'
-
+import React from 'react'
+import {Outlet} from 'react-router-dom'
+import {Header} from './components/index'
 function App() {
-  const currentWeatherData = useSelector((state) => state.weather.currentWeatherData)
-
-  let isday = true; // default value
-  if (currentWeatherData && currentWeatherData.current) {
-    isday = Boolean(currentWeatherData.current.is_day)
-  }
-
-  const title = isday ? 'Weather Updates 🌥️' : 'Weather Updates 🌙';
 
   return (
     <>
-      <h1 id='page-title' className='text-4xl font-bold text-center'>{title}</h1>
-      <SearchContainer />
-      <MultipleSearch/>
-      <CurrentWeatherCard />
-      <HourlyForecast />
-      <div className='text-center my-4'>© Made with Love💙</div>
+      <Header/>
+      <main>
+        <Outlet/>
+      </main>
+      <div className='text-gray-200 text-center mt-24 pb-2'>© Made with Love 💙</div>
     </>
   )
 }
