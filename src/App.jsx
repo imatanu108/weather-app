@@ -9,7 +9,7 @@ function App() {
       <main>
         <Outlet/>
       </main>
-      <div className='text-gray-200 text-center mt-24 pb-2'>© Made with Love 💙</div>
+      <div className='text-gray-200 text-center mt-24 pb-2'>© Made with Love 🤍</div>
     </>
   )
 }

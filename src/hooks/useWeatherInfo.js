@@ -11,7 +11,12 @@ function useWeatherInfo(location) {
             try {
                 const response = await fetch(requestURL);
                 const data = await response.json();
-                setWeatherData(data);
+                // console.log("this is the main location data,", data)
+                if (!data.error) {
+                    setWeatherData(data);
+                } else {
+                    alert(data.error.message)
+                }
             } catch (error) {
                 console.error('Error fetching weather data:', error);
             }

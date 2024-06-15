@@ -1,44 +1,38 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { setMultipleWeatherData } from '../store/weatherSlice';
 import useMultipleWeatherInfo from '../hooks/useMultipleWeatherInfo';
 
 function MultipleSearch() {
     const [location, setLocation] = useState('');
-    const [locationList, setLocationList] = useState([])
-    const [currLocationList, setCurrLocationList] = useState([])
-    const dispatch = useDispatch()
-    const multipleWeatherData = useMultipleWeatherInfo(currLocationList)
+    const [locationList, setLocationList] = useState([]);
+    const dispatch = useDispatch();
+    const multipleWeatherData = useMultipleWeatherInfo(locationList);
 
     const getMultipleWeather = () => {
-        // console.log("this is location", location)
-        console.log("This is location list before", locationList) // previous
-        if (location !== "") {
-            setLocationList((prev) => [...prev, location])
-            console.log("This is location list", locationList) // previous
-            setCurrLocationList(locationList)
-            console.log("This is curr location list", locationList) // previous
-            setLocation('');
+        if (location.trim() !== '') {
+            if (!locationList.includes(location)) {
+                // setLocationList(prev => [...prev, location]);
+                setLocationList([location]);
+                setLocation('');
+            }
         }
     };
 
-    const updateMultipleWeather = () => {
-        setCurrLocationList(currLocationList)
-    }
+    const resetLocations = () => {
+        setLocationList([]);
+        console.log("reset")
+    };
 
-    // dispatching current weather data into store
+    // Dispatch weather data to Redux store when it updates
     useEffect(() => {
         if (multipleWeatherData) {
-            dispatch(setMultipleWeatherData(multipleWeatherData))
-            console.log("This is the weather data of multiple locations", multipleWeatherData)
+            dispatch(setMultipleWeatherData(multipleWeatherData));
         }
-    }, [multipleWeatherData])
+    }, [dispatch, multipleWeatherData]);
 
     return (
         <>
-            {/* <div className='text-center mt-2 text-base'>
-                Compare with other location.
-            </div> */}
             <div className="flex flex-col items-center md:flex-row md:items-center justify-center space-y-4 md:space-y-0 md:space-x-4 p-2 rounded-lg mx-4 mt-2">
                 <input
                     id="search-field"
@@ -57,15 +51,15 @@ function MultipleSearch() {
                         Search
                     </button>
                     <button
-                        onClick={updateMultipleWeather}
+                        onClick={resetLocations}
                         className="h-10 px-6 text-base bg-cyan-300 text-gray-800 rounded-3xl shadow-md hover:bg-cyan-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200"
                     >
-                        Refresh
+                        Reset
                     </button>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default MultipleSearch;

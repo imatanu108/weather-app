@@ -10,8 +10,8 @@ function SearchContainer() {
     const dispatch = useDispatch()
 
     const getWeather = () => {
-        if (location !== "") {
-            setCurrentLocation(location);
+        if (location.trim() !== '') {
+            setCurrentLocation(location.trim());
             setLocation('');
         }
     };
@@ -23,13 +23,14 @@ function SearchContainer() {
 
     // dispatching current weather data into store
     useEffect(() => {
-        dispatch(setCurrentWeatherData(weatherData))
-        // console.log(weatherData);
+        if (weatherData) {
+            dispatch(setCurrentWeatherData(weatherData))
+        }
     }, [weatherData, location, currentLocation])
 
     // setting default current location
     useEffect(() => {
-        setCurrentLocation('kolkata')
+        setCurrentLocation('london')
     }, [])
 
     return (
