@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Loading } from "./index"
 
 function CurrentWeatherCard() {
     const currentWeatherData = useSelector((state) => state.weather.currentWeatherData)
@@ -96,7 +97,7 @@ function CurrentWeatherCard() {
             </div>
         )
     } else {
-        return <div className='text-center'>Loading...</div>;  // Handles the case when data is not yet available
+        return <Loading />;
     }
 }
 

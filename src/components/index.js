@@ -6,6 +6,7 @@ import MultipleSearch from "./MultipleSearch";
 import CompareWeatherCard from "./CompareWeatherCard";
 import CompareWeatherList from "./CompareWeatherList";
 import Header from "./header/Header";
+import Loading from "./loading/Loading";
 
 export { 
     SearchContainer,
@@ -15,5 +16,6 @@ export {
     MultipleSearch,
     CompareWeatherCard,
     CompareWeatherList,
-    Header
+    Header,
+    Loading
  }
