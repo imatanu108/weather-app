@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import config from '../config/config'
 
-function useMultipleWeatherInfo(locationList) {
+function useMultipleWeatherInfo(location) {
     const [multipleWeatherData, setMultipleWeatherData] = useState([]);
 
     useEffect(() => {
-        locationList.map((location) => {
             const fixedLocation = location.split(" ").join("%20")
             let requestURL = `https://api.weatherapi.com/v1/forecast.json?key=${config.weatherApiKey}&q=${fixedLocation}`
     
@@ -27,8 +26,7 @@ function useMultipleWeatherInfo(locationList) {
             if (location) {
                 fetchWeatherData();
             }
-        })
-    }, [locationList])
+    }, [location])
 
     return multipleWeatherData;
 

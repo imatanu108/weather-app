@@ -5,24 +5,32 @@ import useMultipleWeatherInfo from '../hooks/useMultipleWeatherInfo';
 
 function MultipleSearch() {
     const [location, setLocation] = useState('');
+    const [inputLocation, setInputLocation] = useState('');
     const [locationList, setLocationList] = useState([]);
     const dispatch = useDispatch();
-    const multipleWeatherData = useMultipleWeatherInfo(locationList);
+    const multipleWeatherData = useMultipleWeatherInfo(location);
 
     const getMultipleWeather = () => {
-        if (location.trim() !== '') {
-            if (!locationList.includes(location)) {
-                // setLocationList(prev => [...prev, location]);
-                setLocationList([location]);
-                setLocation('');
-            }
+        if (inputLocation.trim() !== '') {
+            setLocation(inputLocation)
+            setInputLocation('')
         }
     };
 
-    const resetLocations = () => {
-        setLocationList([]);
-        console.log("reset")
-    };
+    useEffect(() => {
+        if (location !== '') {
+            if (!locationList.includes(location)) {
+                setLocationList(prev => [...prev, location]);
+                // console.log('this is location', location)
+                // console.log('this is location list', locationList)
+            }
+        }
+    }, [location])
+
+    // const resetLocations = () => {
+    //     setLocationList([]);
+    //     console.log("reset")
+    // };
 
     // Dispatch weather data to Redux store when it updates
     useEffect(() => {
@@ -38,8 +46,8 @@ function MultipleSearch() {
                     id="search-field"
                     type="text"
                     spellCheck="false"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    value={inputLocation}
+                    onChange={(e) => setInputLocation(e.target.value)}
                     className="h-10 w-80 p-3 border text-base text-gray-600 border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
                     placeholder="Enter other locations to compare"
                 />
@@ -50,12 +58,12 @@ function MultipleSearch() {
                     >
                         Search
                     </button>
-                    <button
+                    {/* <button
                         onClick={resetLocations}
                         className="h-10 px-6 text-base bg-cyan-300 text-gray-800 rounded-3xl shadow-md hover:bg-cyan-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200"
                     >
                         Reset
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </>
