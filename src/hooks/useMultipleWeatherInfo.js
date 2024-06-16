@@ -5,37 +5,45 @@ function useMultipleWeatherInfo(location) {
     const [multipleWeatherData, setMultipleWeatherData] = useState([]);
 
     useEffect(() => {
-        const fixedLocation = location.split(" ").join("%20")
-        let requestURL = `https://api.weatherapi.com/v1/forecast.json?key=${config.weatherApiKey}&q=${fixedLocation}`
 
-        const fetchWeatherData = async () => {
-            try {
-                const response = await fetch(requestURL);
-                const data = await response.json();
-                // console.log("this is data",data);
+        // reset handler for locations
+        if (location === 'Deleteing-Locations') {
+            setMultipleWeatherData([])
+        } else {
+            const fixedLocation = location.split(" ").join("%20")
+            let requestURL = `https://api.weatherapi.com/v1/forecast.json?key=${config.weatherApiKey}&q=${fixedLocation}`
 
-                // checking if location is already added
+            const fetchWeatherData = async () => {
+                try {
+                    const response = await fetch(requestURL);
+                    const data = await response.json();
+                    // console.log("this is data",data);
 
-                let filteredData = multipleWeatherData.filter((storedData) => storedData.location.name === data.location.name)
+                    // checking if location is already added
 
-                // if refinedData.length > 0, that means the location is already in the dataset
-                if (filteredData.length === 0) {
-                    if (!data.error) {
-                        setMultipleWeatherData((prev) => [...prev, data])
+                    let filteredData = multipleWeatherData.filter((storedData) => storedData.location.name === data.location.name)
+
+                    // if refinedData.length > 0, that means the location is already in the dataset
+                    if (filteredData.length === 0) {
+                        if (!data.error) {
+                            setMultipleWeatherData((prev) => [...prev, data])
+                        } else {
+                            alert(data.error.message)
+                        }
                     } else {
-                        alert(data.error.message)
+                        alert("Location is already added!")
                     }
-                } else {
-                    alert("Location is already added!")
+                } catch (error) {
+                    console.error('Error fetching multiple weather data:', error);
                 }
-            } catch (error) {
-                console.error('Error fetching multiple weather data:', error);
-            }
-        };
+            };
 
-        if (location) {
-            fetchWeatherData();
+            if (location) {
+                fetchWeatherData();
+            }
+
         }
+
     }, [location])
 
     return multipleWeatherData;

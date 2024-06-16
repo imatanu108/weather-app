@@ -27,10 +27,11 @@ function MultipleSearch() {
         }
     }, [location])
 
-    // const resetLocations = () => {
-    //     setLocationList([]);
-    //     console.log("reset")
-    // };
+    const resetLocations = () => {
+        setLocation("Deleteing-Locations")
+        setLocationList([]);
+        console.log("reset")
+    };
 
     // Dispatch weather data to Redux store when it updates
     useEffect(() => {
@@ -58,12 +59,12 @@ function MultipleSearch() {
                     >
                         Search
                     </button>
-                    {/* <button
+                    <button
                         onClick={resetLocations}
                         className="h-10 px-6 text-base bg-cyan-300 text-gray-800 rounded-3xl shadow-md hover:bg-cyan-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200"
                     >
                         Reset
-                    </button> */}
+                    </button>
                 </div>
             </div>
         </>

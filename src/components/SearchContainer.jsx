@@ -5,7 +5,7 @@ import { setCurrentWeatherData } from '../store/weatherSlice';
 
 function SearchContainer() {
     const [location, setLocation] = useState('');
-    const [currentLocation, setCurrentLocation] = useState('');
+    const [currentLocation, setCurrentLocation] = useState('london');
     const weatherData = useWeatherInfo(currentLocation);
     const dispatch = useDispatch()
 
@@ -16,9 +16,10 @@ function SearchContainer() {
         }
     };
 
-    const updateWeather = () => {
-        setCurrentLocation(currentLocation);
-        console.log("weather updated")
+    // Re-fetch the weather for the current location
+    const refreshWeather = () => {
+        setCurrentLocation(prevLocation => (prevLocation+" ")); 
+        // adding " " at the end to change the state of currentLocation with the same location, passing same location implicitly will not change the state
     };
 
     // dispatching current weather data into store
@@ -27,11 +28,6 @@ function SearchContainer() {
             dispatch(setCurrentWeatherData(weatherData))
         }
     }, [weatherData, location, currentLocation])
-
-    // setting default current location
-    useEffect(() => {
-        setCurrentLocation('london')
-    }, [])
 
     return (
         <>
@@ -56,7 +52,7 @@ function SearchContainer() {
                         Search
                     </button>
                     <button
-                        onClick={updateWeather}
+                        onClick={refreshWeather}
                         className="h-10 px-6 text-base bg-cyan-300 text-gray-800 rounded-3xl shadow-md hover:bg-cyan-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200"
                     >
                         Refresh
