@@ -4,7 +4,7 @@ import config from '../config/config'
 function useWeatherInfo(location) {
     const [weatherData, setWeatherData] = useState({})
     const fixedLocation = location.split(" ").join("%20")
-    let requestURL = `https://api.weatherapi.com/v1/forecast.json?key=${config.weatherApiKey}&q=${fixedLocation}`
+    let requestURL = `https://api.weatherapi.com/v1/forecast.json?key=${config.weatherApiKey}&q=${fixedLocation}&days=10&aqi=yes&alerts=yes`
 
     useEffect(() => {
         const fetchWeatherData = async () => {
