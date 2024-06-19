@@ -2,16 +2,13 @@ import React from 'react'
 import { 
     CompareWeatherList,
     CurrentWeatherCard,
-    MultipleSearch,
-    SearchContainer
+    MultipleSearch
 } from '../components/index'
 
 function ComparePage() {
     return (
         <div>
-            <SearchContainer />
             <MultipleSearch />
-            <CurrentWeatherCard />
             <CompareWeatherList />
         </div>
     )
