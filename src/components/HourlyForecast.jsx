@@ -24,16 +24,16 @@ function HourlyForecast() {
                         forecastDate = dailyData.date
                     }
                     return (
-                        <>
+                        <div key={dayIndex}>
                             <div className='m-3 p-1 rounded-xl text-base font-medium text-center bg-[rgba(106,133,156,0.23)]'>{forecastDate}</div>
-                            <div key={dayIndex} className='scroll-container flex overflow-x-auto space-x-4 mx-2 mt-1 mb-4 px-2 pt-1 pb-3'>
+                            <div className='scroll-container flex overflow-x-auto space-x-4 mx-2 mt-1 mb-4 px-2 pt-1 pb-3'>
                                 {dailyData.hour.map((data, hourIndex) => (
                                     <div key={hourIndex} className="flex-shrink-0">
                                         <HourlyForecastCard hourlyData={data} />
                                     </div>
                                 ))}
                             </div>
-                        </>
+                        </div>
                     )
                 })}
             </div>

@@ -10,7 +10,8 @@ function CurrentWeatherCard() {
     const location = currentWeatherData.location
 
     let dayTime = ''
-    // let uvLevel = ''
+    let uvLevel = ''
+
     if (currentWeatherData && liveWeather) {
         let time = String(liveWeather.last_updated.split(" ")[1]);
         let timeInt = parseInt(time.replace(":", ""), 10);
@@ -35,6 +36,33 @@ function CurrentWeatherCard() {
                 document.body.style.backgroundColor = range.color;
                 break;
             }
+        }
+
+        switch (liveWeather.uv) {
+            case 10:
+            case 9:
+            case 8:
+                uvLevel = "Very High"
+                break;
+
+            case 7:
+            case 6:
+                uvLevel = "High"
+                break;
+
+            case 5:
+            case 4:
+            case 3:
+                uvLevel = "Medium"
+                break;
+                
+            case 2:
+            case 1:
+                uvLevel = "Low"
+                break;
+               
+            default:
+                break;
         }
     }
 
@@ -72,11 +100,16 @@ function CurrentWeatherCard() {
                     <div>
                         Humidity: {liveWeather.humidity}%
                     </div>
-                    <div>
-                        Cloud: {liveWeather.cloud}%
+                    <div className='flex gap-3'>
+                        <div>
+                            Cloud: {liveWeather.cloud}%
+                        </div>
+                        <div>
+                            Rain: {forecastWeather.forecastday[0].day.daily_will_it_rain}%
+                        </div>
                     </div>
                     <div>
-                        Rain: {forecastWeather.forecastday[0].day.daily_will_it_rain}%
+                        UV: {liveWeather.uv} {uvLevel}
                     </div>
                     <div>
                         Wind: {liveWeather.wind_kph} kph {liveWeather.wind_dir}
