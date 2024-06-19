@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setMultipleWeatherData } from '../store/weatherSlice';
 import useMultipleWeatherInfo from '../hooks/useMultipleWeatherInfo';
-import { useSelector } from 'react-redux'
-import useWeatherInfo from '../hooks/useWeatherInfo'
 
 function MultipleSearch() {
     const [location, setLocation] = useState('');
@@ -11,16 +9,6 @@ function MultipleSearch() {
     const [locationList, setLocationList] = useState([]);
     const dispatch = useDispatch();
     const multipleWeatherData = useMultipleWeatherInfo(location);
-
-    // setting the current location (if available) as the first loction in multi-location mood on mounting
-    const currentWeatherData = useSelector((state) => state.weather.currentWeatherData)
-    useEffect(() => {
-        if (currentWeatherData.location) {
-            setLocation(currentWeatherData.location.name)
-        } else {
-            setLocation('london')
-        }
-    }, [])
 
     const getMultipleWeather = () => {
         if (inputLocation.trim() !== '') {
@@ -51,6 +39,23 @@ function MultipleSearch() {
             dispatch(setMultipleWeatherData(multipleWeatherData));
         }
     }, [dispatch, multipleWeatherData]);
+
+    // storing and restoring data in the local storage
+
+    // // restoring
+    useEffect(() => {
+        const oldMultipleWeatherData = JSON.parse(localStorage.getItem("multipleWeatherData"));
+        if (oldMultipleWeatherData) {
+            dispatch(setMultipleWeatherData(oldMultipleWeatherData));
+        }
+    }, [])
+
+    // storing
+    useEffect(() => {
+        localStorage.setItem("multipleWeatherData", JSON.stringify(multipleWeatherData))
+    }, [multipleWeatherData])
+
+    // directly restored in the useMultiple
 
     return (
         <>

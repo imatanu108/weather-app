@@ -29,6 +29,20 @@ function SearchContainer() {
         }
     }, [weatherData, location, currentLocation])
 
+    // storing and restoring data in local-storage
+    //restoring
+    useEffect(() => {
+        const oldLocation = localStorage.getItem("currentLocation")
+        if (oldLocation) {
+            setCurrentLocation(oldLocation);
+        }
+    }, [])
+
+    // storing
+    useEffect(() => {
+        localStorage.setItem("currentLocation", currentLocation)
+    }, [currentLocation])
+
     return (
         <>
             <div className='text-center my-4 mt-8 text-base'>

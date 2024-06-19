@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 import config from '../config/config'
+import { useDispatch, useSelector } from "react-redux";
 
 function useMultipleWeatherInfo(location) {
-    const [multipleWeatherData, setMultipleWeatherData] = useState([]);
+    // First checking if already any saved data is availabe in the local storage and restoring it
+    const dispatch = useDispatch();
+    const oldMultipleWeatherData = useSelector((state) => state.weather.multipleWeatherData);
+    const [multipleWeatherData, setMultipleWeatherData] = useState(() => {
+        const savedData = localStorage.getItem("multipleWeatherData");
+        return savedData ? JSON.parse(savedData) : oldMultipleWeatherData;
+    });
 
     useEffect(() => {
-
         // reset handler for locations
         if (location === 'Deleteing-Locations') {
             setMultipleWeatherData([])
-        } else {
+        } else if (location) {
             const fixedLocation = location.split(" ").join("%20")
             let requestURL = `https://api.weatherapi.com/v1/forecast.json?key=${config.weatherApiKey}&q=${fixedLocation}&days=10&aqi=yes&alerts=yes`
 
