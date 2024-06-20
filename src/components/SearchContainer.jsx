@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import useWeatherInfo from '../hooks/useWeatherInfo'
-import { useDispatch } from 'react-redux'
-import { setCurrentWeatherData } from '../store/weatherSlice';
+import useAutoLocationSearch from '../hooks/useAutoLocationSearch';
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentWeatherData, setAutoLocationSearchData } from '../store/weatherSlice';
+import { AutoSearchCard } from './index'
 
 function SearchContainer() {
     const [location, setLocation] = useState('');
     const [currentLocation, setCurrentLocation] = useState('london');
     const weatherData = useWeatherInfo(currentLocation);
+    const autoLocationSearchData = useAutoLocationSearch(location)
     const dispatch = useDispatch()
+    const currentAutoSearchData = useSelector((state) => state.weather.autoLocationSearchData)
 
     const getWeather = () => {
         if (location.trim() !== '') {
             setCurrentLocation(location.trim());
             setLocation('');
+            dispatch(setAutoLocationSearchData([]))
         }
     };
 
     // Re-fetch the weather for the current location
     const refreshWeather = () => {
-        setCurrentLocation(prevLocation => (prevLocation+" ")); 
+        setCurrentLocation(prevLocation => (prevLocation + " "));
         // adding " " at the end to change the state of currentLocation with the same location, passing same location implicitly will not change the state
     };
 
@@ -28,6 +33,19 @@ function SearchContainer() {
             dispatch(setCurrentWeatherData(weatherData))
         }
     }, [weatherData, location, currentLocation])
+
+    // dispatching auto-location-search data in the store
+    useEffect(() => {
+        dispatch(setAutoLocationSearchData(autoLocationSearchData))
+    }, [location])
+
+    // // auto-search location click handler
+    const locationClickHandler = (e) => {
+        let selectedLocation = e.target.innerText
+        setLocation(selectedLocation);
+        dispatch(setAutoLocationSearchData(null))
+    }
+
 
     // storing and restoring data in local-storage
     //restoring
@@ -72,6 +90,9 @@ function SearchContainer() {
                         Refresh
                     </button>
                 </div>
+            </div>
+            <div className="flex justify-center p-2 rounded-lg">
+                <AutoSearchCard autoSearchData={currentAutoSearchData} onClickHandler={locationClickHandler} />
             </div>
         </>
     )
