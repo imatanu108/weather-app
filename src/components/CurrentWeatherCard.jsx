@@ -33,7 +33,8 @@ function CurrentWeatherCard() {
             if (timeInt >= range.start && timeInt <= range.end) {
                 dayTime = range.name;
                 document.body.style.backgroundImage = range.gradient;
-                document.body.style.backgroundColor = range.color;
+                document.body.style.backgroundColor = range.color; 
+                // background color isn't important but still only for better optimization
                 break;
             }
         }

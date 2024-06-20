@@ -1,7 +1,6 @@
 import React from 'react'
 import { 
     CompareWeatherList,
-    CurrentWeatherCard,
     MultipleSearch
 } from '../components/index'
 

@@ -21,8 +21,6 @@ function MultipleSearch() {
         if (location !== '') {
             if (!locationList.includes(location)) {
                 setLocationList(prev => [...prev, location]);
-                // console.log('this is location', location)
-                // console.log('this is location list', locationList)
             }
         }
     }, [location])
