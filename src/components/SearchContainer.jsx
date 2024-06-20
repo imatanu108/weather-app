@@ -39,7 +39,7 @@ function SearchContainer() {
         dispatch(setAutoLocationSearchData(autoLocationSearchData))
     }, [location])
 
-    // // auto-search location click handler
+    // auto-search location click handler
     const locationClickHandler = (e) => {
         let selectedLocation = e.target.innerText
         setLocation(selectedLocation);
@@ -75,6 +75,7 @@ function SearchContainer() {
                     onChange={(e) => setLocation(e.target.value)}
                     className="h-10 w-80 p-3 border text-base text-gray-600 border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
                     placeholder="Enter your location"
+                    autoComplete='off'
                 />
                 <div className="flex space-x-4">
                     <button

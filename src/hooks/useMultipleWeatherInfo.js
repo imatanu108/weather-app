@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import config from '../config/config'
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function useMultipleWeatherInfo(location) {
     // First checking if already any saved data is availabe in the local storage and restoring it
-    const dispatch = useDispatch();
     const oldMultipleWeatherData = useSelector((state) => state.weather.multipleWeatherData);
     const [multipleWeatherData, setMultipleWeatherData] = useState(() => {
         const savedData = localStorage.getItem("multipleWeatherData");
@@ -27,7 +26,7 @@ function useMultipleWeatherInfo(location) {
 
                     // checking if location is already added
 
-                    let filteredData = multipleWeatherData.filter((storedData) => storedData.location.name === data.location.name)
+                    let filteredData = multipleWeatherData.filter((storedData) => (storedData.location.name.startsWith(data.location.name) || storedData.location.name === data.location.name))
 
                     // if refinedData.length > 0, that means the location is already in the dataset
                     if (filteredData.length === 0) {
