@@ -9,7 +9,10 @@ function App() {
       <main>
         <Outlet />
       </main>
-      <div className='text-gray-200 text-center mt-24 pb-2'>© Made with Love 🤍</div>
+      <div className="text-[rgba(212,252,255,0.77)] text-center text-xs md:text-sm mt-24 pb-2">
+        © Made with 🤍 by <a href="https://github.com/imatanu108" target="_blank" rel="noopener noreferrer" className="hover:underline">Atanu</a>
+      </div>
+
     </>
   )
 }

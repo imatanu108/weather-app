@@ -64,18 +64,18 @@ function CompareWeatherCard({ weatherData }) {
 
         if (liveWeather && forecastWeather && location) {
             return (
-                <div className='flex flex-row flex-wrap gap-4 mt-4 mb-6 justify-center'>
-                    <div className='flex p-4 w-fit flex-col border-2 border-[rgb(142,208,147)] rounded-xl shadow-lg'>
+                <div className='flex w-fit p-1 flex-row flex-wrap md:gap-3 mt-4 mb-6 justify-center bg-[rgba(27,56,71,0.06)] border-2 border-[rgb(142,208,147)] rounded-xl shadow-xl'>
+                    <div className='flex p-4 w-fit flex-col'>
                         <div className='text-center mb-4'>
                             <span className='text-xl'>{location.name}</span>
-                            <span className='text-sm text-slate-300'> {location.region}, {location.country} </span>
+                            <span className='text-sm text-[rgba(212,252,255,0.71)]'> {location.region}, {location.country} </span>
                         </div>
                         <div>
                             <div className='text-center'>
                                 <div className='text-4xl font-medium'>{liveWeather.temp_c} °C
-                                    <span className='text-sm text-slate-300'> {dayTime}</span>
+                                    <span className='text-sm text-[rgba(212,252,255,0.71)]'> {dayTime}</span>
                                 </div>
-                                <div className='text-base text-slate-300'>
+                                <div className='text-base text-[rgba(212,252,255,0.71)]'>
                                     Feels like {liveWeather.feelslike_c} °C
                                 </div>
                             </div>
@@ -84,43 +84,43 @@ function CompareWeatherCard({ weatherData }) {
                                     <img src={String(liveWeather.condition.icon)} width={80} alt="weather-icon" />
                                 </div>
                                 <div>
-                                    <div className='text-xl mt-2'>{liveWeather.condition.text}</div>
-                                    <div>
+                                    <div className='text-lg md:text-xl mt-2'>{liveWeather.condition.text}</div>
+                                    <div className='text-[rgba(212,252,255,0.71)]'>
                                         {forecastWeather.forecastday[0].day.mintemp_c} ~ {forecastWeather.forecastday[0].day.maxtemp_c} °C
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className='flex px-4 py-3 w-fit flex-col justify-between border-2 border-[rgb(142,208,147)] rounded-xl shadow-lg'>
+                    <div className='flex px-4 py-3 w-fit flex-col justify-between'>
                         <div>
-                            Humidity: {liveWeather.humidity}%
+                            <span className='text-[rgba(212,252,255,0.77)]'>Humidity:</span> {liveWeather.humidity}%
                         </div>
                         <div className='flex gap-3'>
                             <div>
-                                Cloud: {liveWeather.cloud}%
+                                <span className='text-[rgba(212,252,255,0.77)]'>Cloud:</span> {liveWeather.cloud}%
                             </div>
                             <div>
-                                Rain: {forecastWeather.forecastday[0].day.daily_will_it_rain}%
+                                <span className='text-[rgba(212,252,255,0.77)]'>Rain:</span> {forecastWeather.forecastday[0].day.daily_will_it_rain}%
                             </div>
                         </div>
                         <div>
-                            UV: {liveWeather.uv} {uvLevel}
+                            <span className='text-[rgba(212,252,255,0.77)]'>UV:</span> {liveWeather.uv} {uvLevel}
                         </div>
                         <div>
-                            Wind: {liveWeather.wind_kph} kph {liveWeather.wind_dir}
+                            <span className='text-[rgba(212,252,255,0.77)]'>Wind:</span> {liveWeather.wind_kph} kph {liveWeather.wind_dir}
                         </div>
                         <div>
-                            Max Wind Speed: {forecastWeather.forecastday[0].day.maxwind_kph} kph
+                            <span className='text-[rgba(212,252,255,0.77)]'>Max Wind Speed:</span> {forecastWeather.forecastday[0].day.maxwind_kph} kph
                         </div>
                         <div>
-                            Sunrise: {forecastWeather.forecastday[0].astro.sunrise}
+                            <span className='text-[rgba(212,252,255,0.77)]'>Sunrise:</span> {forecastWeather.forecastday[0].astro.sunrise}
                         </div>
                         <div>
-                            Sunset: {forecastWeather.forecastday[0].astro.sunset}
+                            <span className='text-[rgba(212,252,255,0.77)]'>Sunset:</span> {forecastWeather.forecastday[0].astro.sunset}
                         </div>
                         <div>
-                            Last updated at {location.localtime}
+                            <span className='text-[rgba(212,252,255,0.77)]'>Last updated at</span> {location.localtime}
                         </div>
                     </div>
                 </div>

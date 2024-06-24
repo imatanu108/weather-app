@@ -22,10 +22,8 @@ function useMultipleWeatherInfo(location) {
                 try {
                     const response = await fetch(requestURL);
                     const data = await response.json();
-                    // console.log("this is data",data);
 
                     // checking if location is already added
-
                     let filteredData = multipleWeatherData.filter((storedData) => (storedData.location.name.startsWith(data.location.name) || storedData.location.name === data.location.name))
 
                     // if refinedData.length > 0, that means the location is already in the dataset

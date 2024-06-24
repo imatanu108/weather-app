@@ -10,7 +10,6 @@ function useAutoLocationSearch(location) {
         const fetchAutoLocationSearchData = async () => {
             try {
                 const response = await fetch(requestURL);
-                console.log(requestURL)
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
