@@ -8,6 +8,7 @@ import CompareWeatherList from "./CompareWeatherList";
 import Header from "./header/Header";
 import Loading from "./loading/Loading";
 import AutoSearchCard from "./AutoSearchCard";
+import Footer from "./footer/Footer";
 
 export { 
     SearchContainer,
@@ -19,5 +20,6 @@ export {
     CompareWeatherList,
     Header,
     Loading,
-    AutoSearchCard
+    AutoSearchCard,
+    Footer
  }
