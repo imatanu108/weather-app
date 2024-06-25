@@ -11,9 +11,9 @@ function CompareWeatherList() {
   }
 
   return (
-    <div className='md:flex md:flex-col items-center'>
+    <div className='flex flex-col items-center'>
       {multipleWeatherData.map((weatherData, index) => (
-        <div key={index} className='mb-8 md:mb-0'>
+        <div key={index} className='my-4'>
           <CompareWeatherCard weatherData={weatherData} />
         </div>
       ))}
