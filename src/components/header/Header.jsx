@@ -13,13 +13,13 @@ function Header() {
   const title = isday ? 'Weather Updates 🌥️' : 'Weather Updates 🌙';
 
   return (
-    <header className=' lg:mx-5 rounded-md shadow-lg p-1 md:p-3 lg:p-5 mb-5 '>
+    <header className=' lg:mx-5  mt-1 mb-5 p-1 md:p-3 lg:p-5 rounded-md shadow-lg'>
       <nav className='flex flex-col md:flex-row justify-between items-center'>
-        <div className='w-full md:w-auto flex justify-center md:justify-start items-center mb-4 md:mb-0'>
+        <h1 className='w-full md:w-auto flex justify-center md:justify-start items-center mb-4 md:mb-0'>
           <Link to="/" className='text-2xl md:text-3xl font-semibold md:font-semibold text-center'>
             {title}
           </Link>
-        </div>
+        </h1>
         <div className='flex flex-row justify-center items-center gap-3 md:gap-2'>
           <NavLink
             to="/"
