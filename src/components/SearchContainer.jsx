@@ -44,7 +44,8 @@ function SearchContainer() {
     // auto-search location click handler
     const locationClickHandler = (e) => {
         let selectedLocation = e.target.innerText
-        setLocation(selectedLocation);
+        setCurrentLocation(selectedLocation);
+        setLocation('')
         dispatch(setAutoLocationSearchData([]))
         setShowSuggestions(false) // stop showing suggestions now
     }

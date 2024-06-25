@@ -70,7 +70,8 @@ function MultipleSearch() {
     // auto-search location click handler
     const locationClickHandler = (e) => {
         let selectedLocation = e.target.innerText
-        setInputLocation(selectedLocation);
+        setLocation(selectedLocation);
+        setInputLocation('')
         dispatch(setAutoLocationSearchData([]))
         setShowSuggestions(false)
     }
