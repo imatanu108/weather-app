@@ -98,7 +98,7 @@ function CurrentWeatherCard() {
                 </div>
                 <div className='flex px-4 py-3 w-fit flex-col gap-1 justify-between border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
                     <div className='flex gap-1'>
-                        <span className='mr-1'><img src="/src/assets/humidity.svg" alt="" width={22} /></span>
+                        <span className='mr-1'><img src="/humidity.svg" alt="" width={22} /></span>
                         <span className='text-[rgba(212,252,255,0.77)]'>Humidity:</span>
                         {liveWeather.humidity}%
                     </div>
