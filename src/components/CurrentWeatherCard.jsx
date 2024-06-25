@@ -104,33 +104,33 @@ function CurrentWeatherCard() {
                     </div>
                     <div className='flex gap-3'>
                         <div className='flex gap-1'>
-                            <span className='mr-1'><img src="/src/assets/cloud.svg" alt="" width={20} /></span>
+                            <span className='mr-1'><img src="/cloud.svg" alt="" width={20} /></span>
                             <span className='text-[rgba(212,252,255,0.77)]'>Cloud:</span>
                             {liveWeather.cloud}%
                         </div>
                         <div className='flex gap-1'>
-                            <span className='mr-1'><img src="/src/assets/rain.svg" alt="" width={22} /></span>
+                            <span className='mr-1'><img src="/rain.svg" alt="" width={22} /></span>
                             <span className='text-[rgba(212,252,255,0.77)]'>Rain:</span> {forecastWeather.forecastday[0].day.daily_will_it_rain}%
                         </div>
                     </div>
                     <div className='flex gap-1'>
-                        <span className='mr-1'><img src="/src/assets/uv.svg" alt="" width={22} /></span>
+                        <span className='mr-1'><img src="/uv.svg" alt="" width={22} /></span>
                         <span className='text-[rgba(212,252,255,0.77)]'>UV:</span> {liveWeather.uv} {uvLevel}
                     </div>
                     <div className='flex gap-1'>
-                        <span className='mr-1'><img src="/src/assets/wind.svg" alt="" width={20} /></span>
+                        <span className='mr-1'><img src="/wind.svg" alt="" width={20} /></span>
                         <span className='text-[rgba(212,252,255,0.77)]'>Wind:</span> {liveWeather.wind_kph} kph {liveWeather.wind_dir}
                     </div>
                     <div className='flex gap-1'>
-                        <span className='mr-1'><img src="/src/assets/max-wind.svg" alt="" width={20} /></span>
+                        <span className='mr-1'><img src="/max-wind.svg" alt="" width={20} /></span>
                         <span className='text-[rgba(212,252,255,0.77)]'>Max Wind Speed:</span> {forecastWeather.forecastday[0].day.maxwind_kph} kph
                     </div>
                     <div className='flex gap-1'>
-                        <span className='mr-1'><img src="/src/assets/sunrise.svg" alt="" width={22} /></span>
+                        <span className='mr-1'><img src="/sunrise.svg" alt="" width={22} /></span>
                         <span className='text-[rgba(212,252,255,0.77)]'>Sunrise:</span> {forecastWeather.forecastday[0].astro.sunrise}
                     </div>
                     <div className='flex gap-1'>
-                        <span className='mr-1'><img src="/src/assets/sunset.svg" alt="" width={22} /></span>
+                        <span className='mr-1'><img src="/sunset.svg" alt="" width={22} /></span>
                         <span className='text-[rgba(212,252,255,0.77)]'>Sunset:</span> {forecastWeather.forecastday[0].astro.sunset}
                     </div>
                     <div>
