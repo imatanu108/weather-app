@@ -9,15 +9,17 @@ function SearchContainer() {
     const [location, setLocation] = useState('');
     const [currentLocation, setCurrentLocation] = useState('new delhi');
     const weatherData = useWeatherInfo(currentLocation);
-    const autoLocationSearchData = useAutoLocationSearch(location)
-    const dispatch = useDispatch()
-    const currentAutoSearchData = useSelector((state) => state.weather.autoLocationSearchData)
+    const autoLocationSearchData = useAutoLocationSearch(location);
+    const [showSuggestions, setShowSuggestions] = useState(true); // State for showing/hiding suggestions
+    const dispatch = useDispatch();
+    const currentAutoSearchData = useSelector((state) => state.weather.autoLocationSearchData);
 
     const getWeather = () => {
         if (location.trim() !== '') {
             setCurrentLocation(location.trim());
             setLocation('');
             dispatch(setAutoLocationSearchData([]))
+            setShowSuggestions(false) 
         }
     };
 
@@ -43,7 +45,8 @@ function SearchContainer() {
     const locationClickHandler = (e) => {
         let selectedLocation = e.target.innerText
         setLocation(selectedLocation);
-        dispatch(setAutoLocationSearchData(null))
+        dispatch(setAutoLocationSearchData([]))
+        setShowSuggestions(false) // stop showing suggestions now
     }
 
 
@@ -72,7 +75,10 @@ function SearchContainer() {
                     type="text"
                     spellCheck="false"
                     value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={(e) => {
+                        setLocation(e.target.value)
+                        setShowSuggestions(true) // start showing suggestions again
+                    }}
                     className="h-9 md:h-10 w-72 md:w-80 p-3 border text-base text-gray-600 border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
                     placeholder="Enter your location"
                     autoComplete='off'
@@ -92,9 +98,11 @@ function SearchContainer() {
                     </button>
                 </div>
             </div>
-            <div className="flex justify-center p-2 rounded-lg">
-                <AutoSearchCard autoSearchData={currentAutoSearchData} onClickHandler={locationClickHandler} />
-            </div>
+            {showSuggestions && (
+                <div className="flex justify-center p-2 rounded-lg">
+                    <AutoSearchCard autoSearchData={currentAutoSearchData} onClickHandler={locationClickHandler} />
+                </div>
+            )}
         </>
     )
 }

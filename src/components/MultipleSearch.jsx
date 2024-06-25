@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setMultipleWeatherData } from '../store/weatherSlice';
 import useMultipleWeatherInfo from '../hooks/useMultipleWeatherInfo';
 import { setCurrentWeatherData, setAutoLocationSearchData } from '../store/weatherSlice';
@@ -12,14 +12,16 @@ function MultipleSearch() {
     const [locationList, setLocationList] = useState([]);
     const dispatch = useDispatch();
     const multipleWeatherData = useMultipleWeatherInfo(location);
-    const autoLocationSearchData = useAutoLocationSearch(inputLocation)
-    const currentAutoSearchData = useSelector((state) => state.weather.autoLocationSearchData)
+    const autoLocationSearchData = useAutoLocationSearch(inputLocation);
+    const [showSuggestions, setShowSuggestions] = useState(true);
+    const currentAutoSearchData = useSelector((state) => state.weather.autoLocationSearchData);
 
     const getMultipleWeather = () => {
         if (inputLocation.trim() !== '') {
             setLocation(inputLocation)
             setInputLocation('')
             dispatch(setAutoLocationSearchData([]))
+            setShowSuggestions(false)
         }
     };
 
@@ -70,6 +72,7 @@ function MultipleSearch() {
         let selectedLocation = e.target.innerText
         setInputLocation(selectedLocation);
         dispatch(setAutoLocationSearchData([]))
+        setShowSuggestions(false)
     }
 
     return (
@@ -83,7 +86,10 @@ function MultipleSearch() {
                     type="text"
                     spellCheck="false"
                     value={inputLocation}
-                    onChange={(e) => setInputLocation(e.target.value)}
+                    onChange={(e) => {
+                        setInputLocation(e.target.value)
+                        setShowSuggestions(true)
+                    }}
                     className="h-9 md:h-10 w-72 md:w-80 p-3 border text-base text-gray-600 border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
                     placeholder="Enter locations"
                     autoComplete='off'
@@ -103,9 +109,11 @@ function MultipleSearch() {
                     </button>
                 </div>
             </div>
-            <div className="flex justify-center p-2 rounded-lg">
-                <AutoSearchCard autoSearchData={currentAutoSearchData} onClickHandler={locationClickHandler} />
-            </div>
+            {showSuggestions && (
+                <div className="flex justify-center p-2 rounded-lg">
+                    <AutoSearchCard autoSearchData={currentAutoSearchData} onClickHandler={locationClickHandler} />
+                </div>
+            )}
         </>
     );
 }
