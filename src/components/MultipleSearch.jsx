@@ -1,41 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setMultipleWeatherData } from '../store/weatherSlice';
 import useMultipleWeatherInfo from '../hooks/useMultipleWeatherInfo';
-import { setCurrentWeatherData, setAutoLocationSearchData } from '../store/weatherSlice';
 import { AutoSearchCard } from './index'
 import useAutoLocationSearch from '../hooks/useAutoLocationSearch';
 
 function MultipleSearch() {
     const [location, setLocation] = useState('');
     const [inputLocation, setInputLocation] = useState('');
-    const [locationList, setLocationList] = useState([]);
-    const dispatch = useDispatch();
     const multipleWeatherData = useMultipleWeatherInfo(location);
     const autoLocationSearchData = useAutoLocationSearch(inputLocation);
     const [showSuggestions, setShowSuggestions] = useState(true);
-    const currentAutoSearchData = useSelector((state) => state.weather.autoLocationSearchData);
+    const dispatch = useDispatch();
 
     const getMultipleWeather = () => {
         if (inputLocation.trim() !== '') {
             setLocation(inputLocation)
             setInputLocation('')
-            dispatch(setAutoLocationSearchData([]))
             setShowSuggestions(false)
         }
     };
 
-    useEffect(() => {
-        if (location !== '') {
-            if (!locationList.includes(location)) {
-                setLocationList(prev => [...prev, location]);
-            }
-        }
-    }, [location])
-
     const resetLocations = () => {
         setLocation("Deleteing-Locations")
-        setLocationList([]);
     };
 
     // Dispatch weather data to Redux store when it updates
@@ -43,11 +30,11 @@ function MultipleSearch() {
         if (multipleWeatherData) {
             dispatch(setMultipleWeatherData(multipleWeatherData));
         }
-    }, [dispatch, multipleWeatherData]);
+    }, [multipleWeatherData]);
 
     // storing and restoring data in the local storage
 
-    // // restoring
+    // restoring
     useEffect(() => {
         const oldMultipleWeatherData = JSON.parse(localStorage.getItem("multipleWeatherData"));
         if (oldMultipleWeatherData) {
@@ -60,26 +47,18 @@ function MultipleSearch() {
         localStorage.setItem("multipleWeatherData", JSON.stringify(multipleWeatherData))
     }, [multipleWeatherData])
 
-    // directly restored in the useMultiple
-
-    // dispatching auto-location-search data in the store
-    useEffect(() => {
-        dispatch(setAutoLocationSearchData(autoLocationSearchData))
-    }, [inputLocation])
-
     // auto-search location click handler
     const locationClickHandler = (e) => {
         let selectedLocation = e.target.innerText
         setLocation(selectedLocation);
         setInputLocation('')
-        dispatch(setAutoLocationSearchData([]))
         setShowSuggestions(false)
     }
 
     return (
         <>
             <div className='text-center my-4 mt-8 text-sm md:text-base'>
-                Enter multiple location & <span className='text-lime-300'>Compare weather!</span>
+                Enter multiple locations & <span className='text-lime-300'>Compare weather!</span>
             </div>
             <div className="flex flex-col items-center md:flex-row md:items-center justify-center space-y-4 md:space-y-0 md:space-x-4 p-2 rounded-lg mx-4 mt-2">
                 <input
@@ -112,7 +91,7 @@ function MultipleSearch() {
             </div>
             {showSuggestions && (
                 <div className="flex justify-center p-2 rounded-lg">
-                    <AutoSearchCard autoSearchData={currentAutoSearchData} onClickHandler={locationClickHandler} />
+                    <AutoSearchCard autoSearchData={autoLocationSearchData} onClickHandler={locationClickHandler} />
                 </div>
             )}
         </>
