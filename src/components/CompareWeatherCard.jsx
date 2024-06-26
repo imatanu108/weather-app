@@ -73,16 +73,17 @@ function CompareWeatherCard({ weatherData }) {
                         <div>
                             <div className='text-center'>
                                 <div className='text-6xl font-extrabold'>{liveWeather.temp_c}
-                                    <span className='font-semibold'> °C</span>
-                                    <span className='text-base text-[rgba(212,252,255,0.71)]'> {dayTime}</span>
+                                    <span className='font-semibold text-[rgba(212,252,255,0.71)]'>°C</span>
+                                    <span className='text-lg text-[rgba(212,252,255,0.71)]'> {dayTime}</span>
                                 </div>
-                                <div className='text-base text-[rgba(212,252,255,0.71)]'>
-                                    Feels like {liveWeather.feelslike_c} °C
+                                <div className='text-lg mt-1 mb-2 text-[rgba(212,252,255,0.71)]'>
+                                    Feels like
+                                    <span className='font-semibold'> {liveWeather.feelslike_c} °C</span>
                                 </div>
                             </div>
                             <div className='flex flex-row items-center justify-center'>
                                 <div>
-                                    <img src={String(liveWeather.condition.icon)} width={85} alt="weather-icon" />
+                                    <img src={String(liveWeather.condition.icon)} width={90} alt="weather-icon" />
                                 </div>
                                 <div>
                                     <div className='text-lg mt-2'>{liveWeather.condition.text}</div>
@@ -93,7 +94,7 @@ function CompareWeatherCard({ weatherData }) {
                             </div>
                         </div>
                     </div>
-                    <div className='flex px-4 py-3 w-fit flex-col gap-2 justify-between'>
+                    <div className='flex px-4 py-3 w-fit flex-col text-base gap-2 justify-between'>
                         <div className='flex gap-1'>
                             <span className='mr-1'><img src="/humidity.svg" alt="" width={22} /></span>
                             <span className='text-[rgba(212,252,255,0.77)]'>Humidity:</span>

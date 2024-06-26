@@ -12,7 +12,7 @@ function HourlyForecast() {
 
     return (
         <>
-            <h3 className='m-2 text-xl font-medium text-center'>Hourly Forecast →</h3>
+            <h3 className='mt-8 mb-4 text-xl font-medium text-center'>Hourly Forecast →</h3>
             <div>
                 {forecastWeather.forecastday.map((dailyData, dayIndex) => {
                     let forecastDate = ''
