@@ -98,48 +98,48 @@ function CompareWeatherCard({ weatherData }) {
                         <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/humidity.svg" alt="" width={22} /></span>
                             <span className='text-[#c4dde9fc]'>Humidity:</span>
-                            <span className='font-semibold'>{liveWeather.humidity}%</span>
+                            <span>{liveWeather.humidity}%</span>
                         </div>
                         <div className='flex gap-3'>
                             <div className='flex gap-1 items-center'>
                                 <span className='mr-1'><img src="/cloud.svg" alt="" width={20} /></span>
                                 <span className='text-[#c4dde9fc]'>Cloud:</span>
-                                <span className='font-semibold'>{liveWeather.cloud}%</span>
+                                <span>{liveWeather.cloud}%</span>
                             </div>
                             <div className='flex gap-1 items-center'>
                                 <span className='mr-1'><img src="/rain.svg" alt="" width={20} /></span>
                                 <span className='text-[#c4dde9fc]'>Rain:</span>
-                                <span className='font-semibold'>{forecastWeather.forecastday[0].day.daily_will_it_rain}%</span>
+                                <span>{forecastWeather.forecastday[0].day.daily_will_it_rain}%</span>
                             </div>
                         </div>
                         <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/uv.svg" alt="" width={22} /></span>
                             <span className='text-[#c4dde9fc]'>UV:</span>
-                            <span className='font-semibold'>{liveWeather.uv} {uvLevel}</span>
+                            <span>{liveWeather.uv} {uvLevel}</span>
                         </div>
                         <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/wind.svg" alt="" width={20} /></span>
                             <span className='text-[#c4dde9fc]'>Wind:</span>
-                            <span className='font-semibold'>{liveWeather.wind_kph} kph {liveWeather.wind_dir}</span>
+                            <span>{liveWeather.wind_kph} kph {liveWeather.wind_dir}</span>
                         </div>
                         <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/max-wind.svg" alt="" width={20} /></span>
                             <span className='text-[#c4dde9fc]'>Max Wind Speed:</span>
-                            <span className='font-semibold'>{forecastWeather.forecastday[0].day.maxwind_kph} kph</span>
+                            <span>{forecastWeather.forecastday[0].day.maxwind_kph} kph</span>
                         </div>
                         <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/sunrise.svg" alt="" width={22} /></span>
                             <span className='text-[#c4dde9fc]'>Sunrise:</span>
-                            <span className='font-semibold'>{forecastWeather.forecastday[0].astro.sunrise}</span>
+                            <span>{forecastWeather.forecastday[0].astro.sunrise}</span>
                         </div>
                         <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/sunset.svg" alt="" width={22} /></span>
                             <span className='text-[#c4dde9fc]'>Sunset:</span>
-                            <span className='font-semibold'>{forecastWeather.forecastday[0].astro.sunset}</span>
+                            <span>{forecastWeather.forecastday[0].astro.sunset}</span>
                         </div>
                         <div>
                             <span className='text-[#c4dde9fc]'>Last updated at</span>
-                            <span className='font-semibold'> {location.localtime}</span>
+                            <span> {location.localtime}</span>
                         </div>
                     </div>
                 </div>
