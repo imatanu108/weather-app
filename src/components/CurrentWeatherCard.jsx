@@ -72,17 +72,17 @@ function CurrentWeatherCard() {
                 <div className='flex p-4 w-fit flex-col justify-center items-center border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
                     <div className='text-center mb-4'>
                         <span className='text-2xl font-semibold'>{location.name}</span>
-                        <span className='text-base text-[rgba(212,252,255,0.71)]'> {location.region}, {location.country} </span>
+                        <span className='text-base text-[rgba(212,252,255,0.78)]'> {location.region}, {location.country} </span>
                     </div>
                     <div>
                         <div className='text-center'>
-                            <div className='text-6xl font-extrabold'>{liveWeather.temp_c}
-                                <span className='font-semibold text-[rgba(212,252,255,0.71)]'>°C</span>
-                                <span className='text-lg text-[rgba(212,252,255,0.71)]'> {dayTime}</span>
+                            <div className='text-5xl font-extrabold'>{liveWeather.temp_c}
+                                <span className='font-semibold text-[rgba(212,252,255,0.78)]'>°C</span>
+                                <span className='text-xl font-semibold text-[rgba(212,252,255,0.78)]'> {dayTime}</span>
                             </div>
-                            <div className='text-lg mt-1 mb-2 text-[rgba(212,252,255,0.71)]'>
+                            <div className='text-lg mt-1 px-16 mb-2 text-[rgba(212,252,255,0.78)]'>
                                 Feels like
-                                <span className='font-semibold'> {liveWeather.feelslike_c} °C</span>
+                                <span className='font-bold'> {liveWeather.feelslike_c} °C</span>
                             </div>
                         </div>
                         <div className='flex flex-row items-center justify-center'>
@@ -91,7 +91,7 @@ function CurrentWeatherCard() {
                             </div>
                             <div>
                                 <div className='text-lg mt-2'>{liveWeather.condition.text}</div>
-                                <div className='text-base text-[rgba(212,252,255,0.71)]'>
+                                <div className='text-base font-semibold text-[rgba(212,252,255,0.86)]'>
                                     {forecastWeather.forecastday[0].day.mintemp_c} ~ {forecastWeather.forecastday[0].day.maxtemp_c} °C
                                 </div>
                             </div>
@@ -99,44 +99,44 @@ function CurrentWeatherCard() {
                     </div>
                 </div>
                 <div className='flex px-6 py-4 w-fit flex-col text-base gap-2 justify-between border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
-                    <div className='flex gap-1'>
+                    <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/humidity.svg" alt="" width={22} /></span>
-                        <span className='text-[rgba(212,252,255,0.77)]'>Humidity:</span>
+                        <span className='text-[rgba(212,252,255,0.86)]'>Humidity:</span>
                         {liveWeather.humidity}%
                     </div>
                     <div className='flex gap-3'>
-                        <div className='flex gap-1'>
+                        <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/cloud.svg" alt="" width={20} /></span>
-                            <span className='text-[rgba(212,252,255,0.77)]'>Cloud:</span>
+                            <span className='text-[rgba(212,252,255,0.86)]'>Cloud:</span>
                             {liveWeather.cloud}%
                         </div>
-                        <div className='flex gap-1'>
-                            <span className='mr-1'><img src="/rain.svg" alt="" width={22} /></span>
-                            <span className='text-[rgba(212,252,255,0.77)]'>Rain:</span> {forecastWeather.forecastday[0].day.daily_will_it_rain}%
+                        <div className='flex gap-1 items-center'>
+                            <span className='mr-1'><img src="/rain.svg" alt="" width={20} /></span>
+                            <span className='text-[rgba(212,252,255,0.86)]'>Rain:</span> {forecastWeather.forecastday[0].day.daily_will_it_rain}%
                         </div>
                     </div>
-                    <div className='flex gap-1'>
+                    <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/uv.svg" alt="" width={22} /></span>
-                        <span className='text-[rgba(212,252,255,0.77)]'>UV:</span> {liveWeather.uv} {uvLevel}
+                        <span className='text-[rgba(212,252,255,0.86)]'>UV:</span> {liveWeather.uv} {uvLevel}
                     </div>
-                    <div className='flex gap-1'>
+                    <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/wind.svg" alt="" width={20} /></span>
-                        <span className='text-[rgba(212,252,255,0.77)]'>Wind:</span> {liveWeather.wind_kph} kph {liveWeather.wind_dir}
+                        <span className='text-[rgba(212,252,255,0.86)]'>Wind:</span> {liveWeather.wind_kph} kph {liveWeather.wind_dir}
                     </div>
-                    <div className='flex gap-1'>
+                    <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/max-wind.svg" alt="" width={20} /></span>
-                        <span className='text-[rgba(212,252,255,0.77)]'>Max Wind Speed:</span> {forecastWeather.forecastday[0].day.maxwind_kph} kph
+                        <span className='text-[rgba(212,252,255,0.86)]'>Max Wind Speed:</span> {forecastWeather.forecastday[0].day.maxwind_kph} kph
                     </div>
-                    <div className='flex gap-1'>
+                    <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/sunrise.svg" alt="" width={22} /></span>
-                        <span className='text-[rgba(212,252,255,0.77)]'>Sunrise:</span> {forecastWeather.forecastday[0].astro.sunrise}
+                        <span className='text-[rgba(212,252,255,0.86)]'>Sunrise:</span> {forecastWeather.forecastday[0].astro.sunrise}
                     </div>
-                    <div className='flex gap-1'>
+                    <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/sunset.svg" alt="" width={22} /></span>
-                        <span className='text-[rgba(212,252,255,0.77)]'>Sunset:</span> {forecastWeather.forecastday[0].astro.sunset}
+                        <span className='text-[rgba(212,252,255,0.86)]'>Sunset:</span> {forecastWeather.forecastday[0].astro.sunset}
                     </div>
                     <div>
-                        <span className='text-[rgba(212,252,255,0.77)]'>Last updated at</span> {location.localtime}
+                        <span className='text-[rgba(212,252,255,0.86)]'>Last updated at</span> {location.localtime}
                     </div>
                 </div>
             </div>
