@@ -9,7 +9,7 @@ function HourlyForecastCard({hourlyData}) {
 
   if (hourlyData) {
     return (
-      <div className='flex text-sm text-[#c8e2eff1] gap-1 font-[100] flex-col justify-center items-center border-2 border-[rgb(168,224,228)] rounded-xl p-2 shadow-lg'>
+      <div className='flex text-sm text-[#c8e2ef] gap-1 font-[100] flex-col justify-center items-center border-2 border-[rgb(168,224,228)] rounded-xl p-2 shadow-lg'>
         <div className='text-base text-slate-50 font-bold pb-1'>{temp} °C</div>
         <img height={60} src={icon} alt="weather-icon" />
         <div>{condition}</div>

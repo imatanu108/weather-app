@@ -20,7 +20,7 @@ function Header() {
             {title}
           </Link>
         </h1>
-        <div className='flex flex-row justify-center items-center gap-3 md:gap-2'>
+        <div className='flex flex-row justify-center items-center gap-6 md:gap-2'>
           <NavLink
             to="/"
             className={({ isActive }) =>

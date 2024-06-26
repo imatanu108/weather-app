@@ -72,15 +72,15 @@ function CurrentWeatherCard() {
                 <div className='flex p-4 w-fit flex-col justify-center items-center border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
                     <div className='text-center mb-4'>
                         <span className='text-2xl font-semibold'>{location.name}</span>
-                        <span className='text-base text-[#c4dde9ea]'> {location.region}, {location.country} </span>
+                        <span className='text-base text-[#c4dde9fc]'> {location.region}, {location.country} </span>
                     </div>
                     <div>
                         <div className='text-center'>
                             <div className='text-5xl font-extrabold'>{liveWeather.temp_c}
-                                <span className='font-semibold text-[#c4dde9ea]'>°C</span>
-                                <span className='text-xl font-semibold text-[#c4dde9ea]'> {dayTime}</span>
+                                <span className='font-semibold text-[#c4dde9fc]'>°C</span>
+                                <span className='text-xl font-semibold text-[#c4dde9fc]'> {dayTime}</span>
                             </div>
-                            <div className='text-lg mt-1 px-16 mb-2 text-[#c4dde9ea]'>
+                            <div className='text-lg mt-1 px-16 mb-2 text-[#c4dde9fc]'>
                                 Feels like
                                 <span className='font-bold'> {liveWeather.feelslike_c} °C</span>
                             </div>
@@ -91,7 +91,7 @@ function CurrentWeatherCard() {
                             </div>
                             <div>
                                 <div className='text-lg mt-2'>{liveWeather.condition.text}</div>
-                                <div className='text-base font-semibold text-[#c4dde9ea]'>
+                                <div className='text-base font-semibold text-[#c4dde9fc]'>
                                     {forecastWeather.forecastday[0].day.mintemp_c} ~ {forecastWeather.forecastday[0].day.maxtemp_c} °C
                                 </div>
                             </div>
@@ -101,42 +101,42 @@ function CurrentWeatherCard() {
                 <div className='flex px-6 py-4 w-fit flex-col text-base gap-2 justify-between border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
                     <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/humidity.svg" alt="" width={22} /></span>
-                        <span className='text-[#c4dde9ea]'>Humidity:</span>
+                        <span className='text-[#c4dde9fc]'>Humidity:</span>
                         {liveWeather.humidity}%
                     </div>
                     <div className='flex gap-3'>
                         <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/cloud.svg" alt="" width={20} /></span>
-                            <span className='text-[#c4dde9ea]'>Cloud:</span>
+                            <span className='text-[#c4dde9fc]'>Cloud:</span>
                             {liveWeather.cloud}%
                         </div>
                         <div className='flex gap-1 items-center'>
                             <span className='mr-1'><img src="/rain.svg" alt="" width={20} /></span>
-                            <span className='text-[#c4dde9ea]'>Rain:</span> {forecastWeather.forecastday[0].day.daily_will_it_rain}%
+                            <span className='text-[#c4dde9fc]'>Rain:</span> {forecastWeather.forecastday[0].day.daily_will_it_rain}%
                         </div>
                     </div>
                     <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/uv.svg" alt="" width={22} /></span>
-                        <span className='text-[#c4dde9ea]'>UV:</span> {liveWeather.uv} {uvLevel}
+                        <span className='text-[#c4dde9fc]'>UV:</span> {liveWeather.uv} {uvLevel}
                     </div>
                     <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/wind.svg" alt="" width={20} /></span>
-                        <span className='text-[#c4dde9ea]'>Wind:</span> {liveWeather.wind_kph} kph {liveWeather.wind_dir}
+                        <span className='text-[#c4dde9fc]'>Wind:</span> {liveWeather.wind_kph} kph {liveWeather.wind_dir}
                     </div>
                     <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/max-wind.svg" alt="" width={20} /></span>
-                        <span className='text-[#c4dde9ea]'>Max Wind Speed:</span> {forecastWeather.forecastday[0].day.maxwind_kph} kph
+                        <span className='text-[#c4dde9fc]'>Max Wind Speed:</span> {forecastWeather.forecastday[0].day.maxwind_kph} kph
                     </div>
                     <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/sunrise.svg" alt="" width={22} /></span>
-                        <span className='text-[#c4dde9ea]'>Sunrise:</span> {forecastWeather.forecastday[0].astro.sunrise}
+                        <span className='text-[#c4dde9fc]'>Sunrise:</span> {forecastWeather.forecastday[0].astro.sunrise}
                     </div>
                     <div className='flex gap-1 items-center'>
                         <span className='mr-1'><img src="/sunset.svg" alt="" width={22} /></span>
-                        <span className='text-[#c4dde9ea]'>Sunset:</span> {forecastWeather.forecastday[0].astro.sunset}
+                        <span className='text-[#c4dde9fc]'>Sunset:</span> {forecastWeather.forecastday[0].astro.sunset}
                     </div>
                     <div>
-                        <span className='text-[#c4dde9ea]'>Last updated at</span> {location.localtime}
+                        <span className='text-[#c4dde9fc]'>Last updated at</span> {location.localtime}
                     </div>
                 </div>
             </div>
