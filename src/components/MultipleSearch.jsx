@@ -57,7 +57,7 @@ function MultipleSearch() {
 
     return (
         <>
-            <div className='text-center my-4 mt-8 text-sm md:text-base'>
+            <div className='text-center my-4 mt-8 text-base md:text-base'>
                 Enter multiple locations & <span className='text-lime-300'>Compare weather!</span>
             </div>
             <div className="flex flex-col items-center md:flex-row md:items-center justify-center space-y-4 md:space-y-0 md:space-x-4 p-2 rounded-lg mx-4 mt-2">
@@ -70,7 +70,7 @@ function MultipleSearch() {
                         setInputLocation(e.target.value)
                         setShowSuggestions(true)
                     }}
-                    className="h-9 md:h-10 w-72 md:w-80 p-3 border text-base text-gray-600 border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                    className="h-10 w-80 p-3 border text-base text-gray-600 border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
                     placeholder="Enter locations"
                     autoComplete='off'
                 />

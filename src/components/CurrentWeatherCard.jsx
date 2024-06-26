@@ -71,13 +71,14 @@ function CurrentWeatherCard() {
             <div className='flex flex-row flex-wrap gap-4 mt-4 lg:mt-6 mb-6 justify-center'>
                 <div className='flex p-4 w-fit flex-col justify-center items-center border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
                     <div className='text-center mb-4'>
-                        <span className='text-xl'>{location.name}</span>
-                        <span className='text-sm text-[rgba(212,252,255,0.71)]'> {location.region}, {location.country} </span>
+                        <span className='text-2xl font-semibold'>{location.name}</span>
+                        <span className='text-base text-[rgba(212,252,255,0.71)]'> {location.region}, {location.country} </span>
                     </div>
                     <div>
                         <div className='text-center'>
-                            <div className='text-4xl font-medium'>{liveWeather.temp_c} °C
-                                <span className='text-sm text-[rgba(212,252,255,0.71)]'> {dayTime}</span>
+                            <div className='text-6xl font-extrabold'>{liveWeather.temp_c}
+                                <span className='font-semibold'> °C</span>
+                                <span className='text-base text-[rgba(212,252,255,0.71)]'> {dayTime}</span>
                             </div>
                             <div className='text-base text-[rgba(212,252,255,0.71)]'>
                                 Feels like {liveWeather.feelslike_c} °C
@@ -85,18 +86,18 @@ function CurrentWeatherCard() {
                         </div>
                         <div className='flex flex-row items-center justify-center'>
                             <div>
-                                <img src={String(liveWeather.condition.icon)} width={80} alt="weather-icon" />
+                                <img src={String(liveWeather.condition.icon)} width={85} alt="weather-icon" />
                             </div>
                             <div>
-                                <div className='text-base mt-2'>{liveWeather.condition.text}</div>
-                                <div className='text-[rgba(212,252,255,0.71)]'>
+                                <div className='text-lg mt-2'>{liveWeather.condition.text}</div>
+                                <div className='text-base text-[rgba(212,252,255,0.71)]'>
                                     {forecastWeather.forecastday[0].day.mintemp_c} ~ {forecastWeather.forecastday[0].day.maxtemp_c} °C
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className='flex px-4 py-3 w-fit flex-col gap-1 justify-between border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
+                <div className='flex px-4 py-3 w-fit flex-col gap-2 justify-between border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
                     <div className='flex gap-1'>
                         <span className='mr-1'><img src="/humidity.svg" alt="" width={22} /></span>
                         <span className='text-[rgba(212,252,255,0.77)]'>Humidity:</span>
