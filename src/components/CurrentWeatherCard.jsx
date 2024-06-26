@@ -22,10 +22,10 @@ function CurrentWeatherCard() {
             { start: 501, end: 659, name: "Early Morning", gradient: "linear-gradient(to bottom, #3e82c5, #1c4f6c)", color: "#1c4f6c" },
             { start: 700, end: 1100, name: "Morning", gradient: "linear-gradient(to bottom, #3e82c5, #3060b8)", color: "#3060b8" },
             { start: 1101, end: 1459, name: "Noon", gradient: "linear-gradient(to bottom, #4a90e2, #5c8ebf)", color: "#5c8ebf" },
-            { start: 1500, end: 1700, name: "Afternoon", gradient: "linear-gradient(to bottom, #3385e3, #427bb5, #3a5b7d)", color: "#75b4f4)" },
-            { start: 1701, end: 1759, name: "Dusk", gradient: "linear-gradient(to bottom, #6e0a40, #bc4a39, #753d29)", color: "#ff7f50" },
-            { start: 1800, end: 2059, name: "Evening", gradient: "linear-gradient(to bottom, #092846, #28527c)", color: "#3f6a95" },
-            { start: 2100, end: 2359, name: "Night", gradient: "linear-gradient(to bottom, #142538, #040e21)", color: "#080614" }
+            { start: 1500, end: 1700, name: "Afternoon", gradient: "linear-gradient(to bottom, #3385e3, #427bb5, #3a5b7d)", color: "#3a5b7d)" },
+            { start: 1701, end: 1759, name: "Dusk", gradient: "linear-gradient(to bottom, #6e0a40, #bc4a39, #753d29)", color: "#753d29" },
+            { start: 1800, end: 2059, name: "Evening", gradient: "linear-gradient(to bottom, #092846, #28527c)", color: "#28527c" },
+            { start: 2100, end: 2359, name: "Night", gradient: "linear-gradient(to bottom, #142538, #040e21)", color: "#040e21" }
         ];
 
         for (let range of timeRanges) {
