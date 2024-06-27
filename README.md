@@ -83,10 +83,6 @@ The app should now be running on `http://localhost:3000`.
 
 Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or new features to suggest.
 
-## License
-
-This project is licensed under the MIT License.
-
 ---
 
 Enjoy using PreWeather!
