@@ -10,7 +10,7 @@ function Footer() {
             </div>
             <div>
                 <a href="https://linkedin.com/in/imatanu" target="_blank" rel="noopener noreferrer">
-                    <img src="/linkedin.svg" alt="" width={25} />
+                    <img src="/linkedin.svg" alt="" width={27} />
                 </a>
             </div>
 

@@ -64,7 +64,7 @@ function CompareWeatherCard({ weatherData }) {
 
         if (liveWeather && forecastWeather && location) {
             return (
-                <div className='flex w-fit md:p-1 flex-row flex-wrap justify-center items-center bg-[rgba(27,56,71,0.06)] border-2 border-[rgb(142,208,147)] rounded-xl shadow-xl'>
+                <div className='flex w-fit mx-1 md:p-1 flex-row flex-wrap justify-center items-center bg-[rgba(27,56,71,0.06)] border-2 border-[rgb(142,208,147)] rounded-xl shadow-xl'>
                     <div className='flex p-4 w-fit flex-col'>
                         <div className='text-center mb-4'>
                             <span className='text-2xl font-semibold'>{location.name}</span>
