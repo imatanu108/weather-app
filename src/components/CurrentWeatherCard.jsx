@@ -68,8 +68,8 @@ function CurrentWeatherCard() {
 
     if (liveWeather && forecastWeather && location) {
         return (
-            <div className='flex flex-row flex-wrap gap-4 mt-4 lg:mt-6 mb-6 justify-center'>
-                <div className='flex p-4 w-fit flex-col justify-center items-center border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
+            <div className='flex flex-row mx-1 flex-wrap gap-4 mt-4 lg:mt-6 mb-6 justify-center'>
+                <div className='flex p-3 md:p-4 w-fit flex-col justify-center items-center border-2 border-[rgb(142,204,208)] rounded-xl shadow-lg'>
                     <div className='text-center mb-4'>
                         <span className='text-2xl font-semibold'>{location.name}</span>
                         <span className='text-base text-[#c4dde9fc]'> {location.region}, {location.country} </span>
