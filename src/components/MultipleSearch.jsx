@@ -6,23 +6,28 @@ import { AutoSearchCard } from './index'
 import useAutoLocationSearch from '../hooks/useAutoLocationSearch';
 
 function MultipleSearch() {
-    const [location, setLocation] = useState('');
     const [inputLocation, setInputLocation] = useState('');
-    const multipleWeatherData = useMultipleWeatherInfo(location);
+    const [locationList, setLocationList] = useState([])
+    const multipleWeatherData = useMultipleWeatherInfo(locationList);
     const autoLocationSearchData = useAutoLocationSearch(inputLocation);
     const [showSuggestions, setShowSuggestions] = useState(true);
     const dispatch = useDispatch();
 
     const getMultipleWeather = () => {
         if (inputLocation.trim() !== '') {
-            setLocation(inputLocation)
+            let refinedList = locationList.filter((location) => (
+                location.toLowerCase() !== inputLocation.toLowerCase() ||
+                !(location.toLowerCase().startsWith(inputLocation.toLowerCase())) ||
+                !(inputLocation.toLowerCase().startsWith(location.toLowerCase()))
+            ))
+            setLocationList([...refinedList, inputLocation])
             setInputLocation('')
             setShowSuggestions(false)
         }
     };
 
     const resetLocations = () => {
-        setLocation("Deleteing-Locations")
+        setLocationList([])
     };
 
     // Dispatch weather data to Redux store when it updates
@@ -36,21 +41,26 @@ function MultipleSearch() {
 
     // restoring
     useEffect(() => {
-        const oldMultipleWeatherData = JSON.parse(localStorage.getItem("multipleWeatherData"));
-        if (oldMultipleWeatherData) {
-            dispatch(setMultipleWeatherData(oldMultipleWeatherData));
+        const oldLocationList = JSON.parse(localStorage.getItem("locationList"));
+        if (oldLocationList) {
+            setLocationList(oldLocationList)
         }
     }, [])
 
     // storing
     useEffect(() => {
-        localStorage.setItem("multipleWeatherData", JSON.stringify(multipleWeatherData))
-    }, [multipleWeatherData])
+        localStorage.setItem("locationList", JSON.stringify(locationList))
+    }, [locationList])
 
     // auto-search location click handler
     const locationClickHandler = (e) => {
         let selectedLocation = e.target.innerText
-        setLocation(selectedLocation);
+        let refinedList = locationList.filter((location) => (
+            location.toLowerCase() !== selectedLocation.toLowerCase() ||
+            !(location.toLowerCase().startsWith(selectedLocation.toLowerCase())) ||
+            !(selectedLocation.toLowerCase().startsWith(location.toLowerCase()))
+        ))
+        setLocationList([...refinedList, selectedLocation])
         setInputLocation('')
         setShowSuggestions(false)
     }

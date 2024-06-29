@@ -1,56 +1,42 @@
 import { useState, useEffect } from "react";
-import config from '../config/config'
-import { useSelector } from "react-redux";
+import config from '../config/config';
 
-function useMultipleWeatherInfo(location) {
-    // First checking if already any saved data is availabe in the local storage and restoring it
-    const oldMultipleWeatherData = useSelector((state) => state.weather.multipleWeatherData);
-    const [multipleWeatherData, setMultipleWeatherData] = useState(() => {
-        const savedData = localStorage.getItem("multipleWeatherData");
-        return savedData ? JSON.parse(savedData) : oldMultipleWeatherData;
-    });
+function useMultipleWeatherInfo(locationList) {
+    const [multipleWeatherData, setMultipleWeatherData] = useState([]);
 
     useEffect(() => {
-        // reset handler for locations
-        if (location === 'Deleteing-Locations') {
-            setMultipleWeatherData([])
-        } else if (location) {
-            const fixedLocation = location.split(" ").join("%20")
-            let requestURL = `https://api.weatherapi.com/v1/forecast.json?key=${config.weatherApiKey}&q=${fixedLocation}&days=10&aqi=yes&alerts=yes`
+        const fetchWeatherData = async () => {
+            const weatherData = [];
+            const fetchedLocations = new Set();
 
-            const fetchWeatherData = async () => {
-                try {
-                    const response = await fetch(requestURL);
-                    const data = await response.json();
+            await Promise.all(locationList.map(async (location) => {
+                if (location) {
+                    const fixedLocation = location.split(" ").join("%20");
+                    const requestURL = `https://api.weatherapi.com/v1/forecast.json?key=${config.weatherApiKey}&q=${fixedLocation}&days=10&aqi=yes&alerts=yes`;
 
-                    // checking if location is already added
-                    let filteredData = multipleWeatherData.filter((storedData) => (storedData.location.name.startsWith(data.location.name) || storedData.location.name === data.location.name))
+                    try {
+                        const response = await fetch(requestURL);
+                        const data = await response.json();
 
-                    // if refinedData.length > 0, that means the location is already in the dataset
-                    if (filteredData.length === 0) {
-                        if (!data.error) {
-                            setMultipleWeatherData((prev) => [...prev, data])
-                        } else {
-                            alert(data.error.message)
+                        if (!data.error && !fetchedLocations.has(data.location.name)) {
+                            weatherData.push(data);
+                            fetchedLocations.add(data.location.name);
+                        } else if (data.error) {
+                            console.error(data.error.message);
                         }
-                    } else {
-                        alert("Location is already added!")
+                    } catch (error) {
+                        console.error('Error fetching multiple weather data:', error);
                     }
-                } catch (error) {
-                    console.error('Error fetching multiple weather data:', error);
                 }
-            };
+            }));
 
-            if (location) {
-                fetchWeatherData();
-            }
+            setMultipleWeatherData(weatherData);
+        };
 
-        }
-
-    }, [location])
+        fetchWeatherData();
+    }, [locationList]);
 
     return multipleWeatherData;
-
 }
 
-export default useMultipleWeatherInfo
+export default useMultipleWeatherInfo;

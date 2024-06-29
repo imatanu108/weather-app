@@ -8,38 +8,33 @@ Welcome to PreWeather, a sophisticated weather app built using React and Redux. 
 - Enter any location to receive live weather updates.
 - Information includes temperature, feels like temperature, current condition, wind speed, UV level, chance of rain, humidity, cloud cover, and more.
 
-### 2. Auto Daytime Detection
-- The app detects the time of day (morning, noon, mid-night, dusk) and adjusts accordingly.
-
-### 3. Forecast Weather Data
+### 2. Forecast Weather Data
 - Provides upcoming hourly weather data for the next 10 days.
 
-### 4. Refresh Data
-- Update weather data without reloading the page by clicking the refresh button.
-
-### 5. Dynamic Backgrounds
-- Background images change based on the time of day in the live location.
-
-### 6. Persistent Local Storage
-- All weather data and settings are saved to local storage, ensuring data is retained across sessions.
-
-### 7. Multi-location Mode
+### 3. Multi-location Mode
 - Add multiple locations to your dashboard and view their weather data simultaneously.
 - Data for multiple locations is stored separately from the main location and is also saved to local storage.
 
-### 8. Data Management
-- Easily remove all location data with a reset button.
-
-### 9. Location Suggestions
+### 4. Location Suggestions
 - Typing a location name provides auto-complete suggestions for easy selection.
 
-### 10. Iconography
-- Numerous icons representing various weather conditions are displayed across all pages.
-
-### 11. Single vs Multi-location Mode
+### 5. Single vs Multi-location Mode
 - Multi-location mode operates independently of the single-location mode, ensuring no data conflicts.
 
-### 12. Responsive Design
+### 6. Auto Daytime Detection
+- The app detects the time of day (morning, noon, mid-night, dusk) and adjusts accordingly.
+
+### 7. Dynamic Backgrounds
+- Background images change based on the time of day in the live location.
+
+### 8. Persistent Local Storage
+- All weather data and settings are saved to local storage, ensuring data is retained across sessions.
+
+### 9. Data Management
+- Update weather data without reloading the page by clicking the refresh button.
+- Easily remove all location data with a reset button.
+
+### 10. Responsive Design
 - The app is fully responsive and designed using Tailwind CSS to ensure it looks great on all devices.
 
 ## Deployment
@@ -76,8 +71,6 @@ To run this project locally, follow these steps:
     ```bash
     npm start
     ```
-
-The app should now be running on `http://localhost:3000`.
 
 ## Contributing
 
